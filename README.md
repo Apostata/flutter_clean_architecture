@@ -7,23 +7,8 @@ Sempre extender e não modificar a classe
 Primeiro pensa na camada de negócio
 
 **Pastas**
--lib
-|- Core = Coisas compartilhadas entre as features
-|---- Usecases (Interfaces que serão compartilhadas nas camadas de Features)
-|---- Utils
-|- Features 
-|---- Domain (camada de abstração, Interfaces)
-|------- Entities (Interfaces dos modelos)
-|------- Repositories (Interfaces das funções do app)
-|------- Usecases (Implementação dos repositórios Interfaces, regra de negócio e validações)
-|---- Data (camada e implementação)
-|------- Datasources (conexão real ao mundo externo. chamada APIs só importa o resultado feliz)
-|------- Models (modelos externos, implmenta Interfaces das Entities)
-|------- Repositories (implementação Interfaces dos Repositories de Domain, validação dos erros de api e etc)
-|---- Presenter
-|------- Widgets
-|------- Pages
--test
+-lib</br>|- Core = Coisas compartilhadas entre as features
+|---- Usecases (Interfaces que serão compartilhadas nas camadas de Features)</br>|---- Utils</br>|- Features</br>|---- Domain (camada de abstração, Interfaces)</br>|-------Entities (Interfaces dos modelos)</br>|------- Repositories (Interfaces das funções do app)</br>|------- Usecases (Implementação dos repositórios Interfaces, regra de negócio e validações)</br>|---- Data (camada e implementação)</br>|------- Datasources (conexão real ao mundo externo. chamada APIs só importa o resultado feliz)</br>|------- Models (modelos externos, implmenta Interfaces das Entities)</br>|------- Repositories (implementação Interfaces dos Repositories de Domain, validação dos erros de api e etc)</br>|---- Presenter</br>|------- Widgets</br>|------- Pages</br>-test</br>|- ...(segue mesmas estrutura de features)
 
 ## Camadas do clean code
 **1. Core**
@@ -35,17 +20,16 @@ Primeiro pensa na camada de negócio
 
   - <ins>Domain</ins>
   A camada que não depende de nenhuma outra camada aqui é apenas a camada de domínio (independente) que é o código para a lógica de negócios. Dessa forma, o aplicativo é mais adaptável e dinâmico. Por exemplo, se quisermos alterar o gerenciamento de estado do provedor para BLoC, o processo de migração não interferirá na lógica de negócios existente.
-  </br>
 
-    1. **Entities**
+    1. <b>Entities</b>
   Interface dos modelos de dados(schemmas) ignorando as transformações e o formato de dados extennos 
   </br>
 
-    2. **Repositories**
+    2. <b>Repositories</b>
   Interfaces das classes e métodos das regras do app
   </br>
 
-    3. **Usecases**
+    3. <b>Usecases</b>
   A implementação das Interfaces dos Repositoriese e validações dados quando necessários
   </br>
 
@@ -53,15 +37,15 @@ Primeiro pensa na camada de negócio
   A camada de dados está localizada na camada mais externa. Essa camada consiste em código-fonte de dados, como API Rest de consumo, acesso ao banco de dados local, Firebase ou outras fontes.
   </br>
 
-    1. **Models**
+    1. <b>Models</b>
    A definição das Entities Levando em conta as transformações de dados necessárias(to json, from json)
    </br>
 
-     1. **Repositories**
+     2. <b>Repositories</b>
    As implementações reais das classes e métodos das regras do app, Valida os casos de sucesso e falhas
    </br>
 
-     1. **Datasources**
+     3. <b>Datasources</b>
    Classes e métodos de conexões externas do app, exemplo,  das chamadas de APIs, neste caso só consideramos o resultado esperado, visto que quem trata essa validação é o Repositories, aqui apenas mapeamos os erros de status code e lançamos uma exception customizada para cada erro que quiser tratar
   </br>
 
@@ -69,16 +53,9 @@ Primeiro pensa na camada de negócio
    A camada de apresentação consiste no código para acessar os dados do aplicativo a partir de um repositório. Além disso, há o código para gerenciamento de estado, como provedores, BLoC e assim por diante.
 
   
-## Ferramentas
-iremos usar a [api do open weather](https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={apiKey})
+## Api
+iremos usar a [api do open weather](https://openweathermap.org/api)
 
-E gerenciamento de estado com o padrão **BLoC**.
-
-libs utilizadas no projeto:
-* Dartz
-* Equatable
-* Mocktail
-* Http
 
 ## Passo a Passo da implementação do clean architecture
 
