@@ -24,11 +24,9 @@ Primeiro pensa na camada de negócio
     1. <b>Entities</b>
   Interface dos modelos de dados(schemmas) ignorando as transformações e o formato de dados extennos 
   </br>
-
     2. <b>Repositories</b>
   Interfaces das classes e métodos das regras do app
   </br>
-
     3. <b>Usecases</b>
   A implementação das Interfaces dos Repositoriese e validações dados quando necessários
   </br>
@@ -40,15 +38,13 @@ Primeiro pensa na camada de negócio
     1. <b>Models</b>
    A definição das Entities Levando em conta as transformações de dados necessárias(to json, from json)
    </br>
-
      2. <b>Repositories</b>
    As implementações reais das classes e métodos das regras do app, Valida os casos de sucesso e falhas
    </br>
-
      3. <b>Datasources</b>
    Classes e métodos de conexões externas do app, exemplo,  das chamadas de APIs, neste caso só consideramos o resultado esperado, visto que quem trata essa validação é o Repositories, aqui apenas mapeamos os erros de status code e lançamos uma exception customizada para cada erro que quiser tratar
   </br>
-
+  
 - <ins>Presenter</ins>
    A camada de apresentação consiste no código para acessar os dados do aplicativo a partir de um repositório. Além disso, há o código para gerenciamento de estado, como provedores, BLoC e assim por diante.
 
@@ -983,16 +979,11 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
-## Packages utilizadas:
-dartz - Implementação dos conceitos de progrmação funcional para dart
-http - Chamadas http
-flutter_bloc - Para implementação do BLoC para gerenciamento de estaos
-get_it - Para injeção de dependencias
-equatable - Facilitar a comparação de objetos no dart, mesmo entre duas instancias. (bom para testes)
-mocktail - Facilitar Mock, Fake e Stubs e não tem gerção de código como o Mockito
-bloc_test - Facilitar os testes de BLoC
+## Packages utilizadas:</br>
+dartz - Implementação dos conceitos de progrmação funcional para dart</br>http - Chamadas http</br>flutter_bloc - Para implementação do BLoC para gerenciamento de estaos</br>get_it - Para injeção de dependencias</br>equatable - Facilitar a comparação de objetos no dart, mesmo entre duas instancias. (bom para testes)</br>
+mocktail - Facilitar Mock, Fake e Stubs e não tem gerção de código como o Mockito</br>bloc_test - Facilitar os testes de BLoC
 
-Agradecimentos pelo conhecimento fornecido:
-[Tutorial no youtube](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7) by [LeBaleiro](https://github.com/LeBaleiro)
-e
+Agradecimentos pelo conhecimento fornecido:</br>
+[Tutorial no youtube](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7) by [LeBaleiro](https://github.com/LeBaleiro)</br>
+e</br>
 [Tutorial no medium](https://betterprogramming.pub/flutter-clean-architecture-test-driven-development-practical-guide-445f388e8604) by [CodeStronaut](https://github.com/codestronaut)
