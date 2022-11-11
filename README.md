@@ -38,13 +38,13 @@ Primeiro pensa na camada de negócio
     1. <b>Models</b>
    A definição das Entities Levando em conta as transformações de dados necessárias(to json, from json)
    </br>
-     2. <b>Repositories</b>
+    2. <b>Repositories</b>
    As implementações reais das classes e métodos das regras do app, Valida os casos de sucesso e falhas
    </br>
-     3. <b>Datasources</b>
+    3. <b>Datasources</b>
    Classes e métodos de conexões externas do app, exemplo,  das chamadas de APIs, neste caso só consideramos o resultado esperado, visto que quem trata essa validação é o Repositories, aqui apenas mapeamos os erros de status code e lançamos uma exception customizada para cada erro que quiser tratar
   </br>
-  
+
 - <ins>Presenter</ins>
    A camada de apresentação consiste no código para acessar os dados do aplicativo a partir de um repositório. Além disso, há o código para gerenciamento de estado, como provedores, BLoC e assim por diante.
 
