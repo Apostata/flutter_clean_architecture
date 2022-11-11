@@ -22,28 +22,21 @@ Primeiro pensa na camada de negócio
   A camada que não depende de nenhuma outra camada aqui é apenas a camada de domínio (independente) que é o código para a lógica de negócios. Dessa forma, o aplicativo é mais adaptável e dinâmico. Por exemplo, se quisermos alterar o gerenciamento de estado do provedor para BLoC, o processo de migração não interferirá na lógica de negócios existente.
 
     1. <b>Entities</b>
-  Interface dos modelos de dados(schemmas) ignorando as transformações e o formato de dados extennos 
-  </br>
+  Interface dos modelos de dados(schemmas) ignorando as transformações e o formato de dados extennos</br>
     2. <b>Repositories</b>
-  Interfaces das classes e métodos das regras do app
-  </br>
+  Interfaces das classes e métodos das regras do app</br>
     3. <b>Usecases</b>
-  A implementação das Interfaces dos Repositoriese e validações dados quando necessários
-  </br>
+  A implementação das Interfaces dos Repositoriese e validações dados quando necessários</br>
 
   - <ins>Data</ins>
-  A camada de dados está localizada na camada mais externa. Essa camada consiste em código-fonte de dados, como API Rest de consumo, acesso ao banco de dados local, Firebase ou outras fontes.
-  </br>
+  A camada de dados está localizada na camada mais externa. Essa camada consiste em código-fonte de dados, como API Rest de consumo, acesso ao banco de dados local, Firebase ou outras fontes.</br>
 
     1. <b>Models</b>
-   A definição das Entities Levando em conta as transformações de dados necessárias(to json, from json)
-   </br>
+   A definição das Entities Levando em conta as transformações de dados necessárias(to json, from json)</br>
     2. <b>Repositories</b>
-   As implementações reais das classes e métodos das regras do app, Valida os casos de sucesso e falhas
-   </br>
+   As implementações reais das classes e métodos das regras do app, Valida os casos de sucesso e falhas</br>
     3. <b>Datasources</b>
-   Classes e métodos de conexões externas do app, exemplo,  das chamadas de APIs, neste caso só consideramos o resultado esperado, visto que quem trata essa validação é o Repositories, aqui apenas mapeamos os erros de status code e lançamos uma exception customizada para cada erro que quiser tratar
-  </br>
+   Classes e métodos de conexões externas do app, exemplo,  das chamadas de APIs, neste caso só consideramos o resultado esperado, visto que quem trata essa validação é o Repositories, aqui apenas mapeamos os erros de status code e lançamos uma exception customizada para cada erro que quiser tratar</br>
 
 - <ins>Presenter</ins>
    A camada de apresentação consiste no código para acessar os dados do aplicativo a partir de um repositório. Além disso, há o código para gerenciamento de estado, como provedores, BLoC e assim por diante.
