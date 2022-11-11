@@ -12,24 +12,18 @@ final locator = GetIt.instance;
 
 void init() {
   // bloc
-  locator.registerFactory(
-    () => WeatherBloc(locator()),
-  );
+  locator.registerFactory(() => WeatherBloc(locator()));
 
   // usecase
-  locator.registerLazySingleton(
-    () => GetCurrentWeatherUsecase(locator()),
-  );
+  locator.registerLazySingleton(() => GetCurrentWeatherUsecase(locator()));
 
   // repository
   locator.registerLazySingleton<IWeatherRepository>(
-    () => WeatherRepository(locator()),
-  );
+      () => WeatherRepository(locator()));
 
   // datasource
   locator.registerLazySingleton<IWeatherDatasource>(
-    () => WeatherDataSource(locator()),
-  );
+      () => WeatherDataSource(locator()));
 
   // httpClient
   locator.registerLazySingleton<IHttpClient>(() => HttpClientCustom());

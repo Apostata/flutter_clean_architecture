@@ -27,6 +27,14 @@ Estrutuda de testes AAA
 
 Arquivos devem terminar com `_test`, exemplo, para testar o arquivo `validator.dart`, criar um `validator_test.dart`.
 
+
+## Faking, Mocking e Stubing
+Objetos Fake realmente têm implementações de trabalho, mas geralmente usam algum atalho que os torna inadequados para produção
+
+Os Stubs fornecem respostas prontas para chamadas feitas durante o teste, geralmente não respondendo a nada fora do que está programado para o teste. Os Stubs também podem registrar informações sobre chamadas, como um Stub de gateway de e-mail que lembra as mensagens que 'enviaram' ou talvez apenas quantas mensagens 'enviaram'.
+
+Mocks são objetos pré-programados com expectativas que formam uma especificação das chamadas que se espera que recebam.
+
 ### Escrevendo testes
 ```dart
 void main(){

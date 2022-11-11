@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture/features/data/constants.dart';
 import 'package:flutter_clean_architecture/features/presenter/bloc/weather_bloc.dart';
@@ -21,9 +19,7 @@ class WeatherPage extends StatelessWidget {
             style: TextStyle(color: Colors.orange),
           ),
         ),
-        body:
-            // Container()
-            Padding(
+        body: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
             children: [
@@ -43,7 +39,6 @@ class WeatherPage extends StatelessWidget {
                   if (state is WeatherLoadingState) {
                     return const Center(
                       child: CircularProgressIndicator(),
-                      // SizedBox(Text('loading...'))
                     );
                   } else if (state is WeatherLoadedState) {
                     return Center(

@@ -1,7 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_clean_architecture/core/utils/errors/failure.dart';
-import 'package:flutter_clean_architecture/features/data/repositories/weather_repository_implementation.dart';
 import 'package:flutter_clean_architecture/features/domain/usecases/get_current_weather_usecase.dart';
 import 'package:flutter_clean_architecture/features/presenter/bloc/weather_bloc.dart';
 import 'package:flutter_clean_architecture/features/presenter/bloc/weather_event.dart';
