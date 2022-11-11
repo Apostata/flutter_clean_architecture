@@ -29,8 +29,7 @@ Primeiro pensa na camada de negócio
   A implementação das Interfaces dos Repositoriese e validações dados quando necessários</br>
 
   - <ins>Data</ins>
-  A camada de dados está localizada na camada mais externa. Essa camada consiste em código-fonte de dados, como API Rest de consumo, acesso ao banco de dados local, Firebase ou outras fontes.
-  </br>
+  A camada de dados está localizada na camada mais externa. Essa camada consiste em código-fonte de dados, como API Rest de consumo, acesso ao banco de dados local, Firebase ou outras fontes.</br>
 
     1. <b>Models</b>
    A definição das Entities Levando em conta as transformações de dados necessárias(to json, from json)</br>
