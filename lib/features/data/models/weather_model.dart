@@ -51,13 +51,14 @@ class WeatherModel extends IWeather {
 
   IWeather toEntity() {
     return IWeather(
-        cityName: cityName,
-        main: main,
-        description: description,
-        iconCode: iconCode,
-        temperature: temperature,
-        pressure: pressure,
-        humidity: humidity);
+      cityName: cityName,
+      main: main,
+      description: description,
+      iconCode: iconCode,
+      temperature: temperature,
+      pressure: pressure,
+      humidity: humidity,
+    );
   }
 
   @override

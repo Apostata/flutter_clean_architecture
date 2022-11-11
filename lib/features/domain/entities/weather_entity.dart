@@ -5,9 +5,9 @@ class IWeather extends Equatable {
   final String main;
   final String description;
   final String iconCode;
-  final double temperature;
-  final int pressure;
-  final int humidity;
+  final num temperature;
+  final num pressure;
+  final num humidity;
 
   const IWeather({
     required this.cityName,
