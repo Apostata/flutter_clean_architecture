@@ -1,4 +1,4 @@
-# Clean Architecture usando
+# Clean Architecture
 Pensar em camadas independentes e desacopladas e para projetos grandes
 A Estrutuda tem que deixar claro a intenção do app, como um projeto de ecommerce, ou qualquer outro ramo
 Pincipio de injeção de dependencias, sempre depender de uma interface (mas no caso uma classe asbrata), já que a implementação pode variar
@@ -6,7 +6,7 @@ Sempre extender e não modificar a classe
 
 Primeiro pensa na camada de negócio
 
-**Pastas**
+**Pastas**</br>
 -lib</br>|- Core = Coisas compartilhadas entre as features
 |---- Usecases (Interfaces que serão compartilhadas nas camadas de Features)</br>|---- Utils</br>|- Features</br>|---- Domain (camada de abstração, Interfaces)</br>|-------Entities (Interfaces dos modelos)</br>|------- Repositories (Interfaces das funções do app)</br>|------- Usecases (Implementação dos repositórios Interfaces, regra de negócio e validações)</br>|---- Data (camada e implementação)</br>|------- Datasources (conexão real ao mundo externo. chamada APIs só importa o resultado feliz)</br>|------- Models (modelos externos, implmenta Interfaces das Entities)</br>|------- Repositories (implementação Interfaces dos Repositories de Domain, validação dos erros de api e etc)</br>|---- Presenter</br>|------- Widgets</br>|------- Pages</br>-test</br>|- ...(segue mesmas estrutura de features)
 
@@ -157,9 +157,8 @@ class GetCurrentWeatherUsecase implements IUseCase<IWeather, String> {
     return repository.getCurrentWeatherByCityName(cityName);
   }
 }
-
-
 ```
+
 5. para criar um padrão para todos usecases vamos criar uma interface IUseCase, assim seremos obrigados e passar a entrada e a saida para uma obrigatória função call `lib/core/Interfaces/usecase.dart`
 ```dart
 abstract class IUseCase<Output, Input> {
@@ -572,6 +571,7 @@ void main() {
 ```
 
 2. Criar o BLoC, para isso teremos de iniciar criando os estaos do BLoC `lib/features/presenter/bloc/weather_state.dart`:
+
 ```dart
 abstract class WeatherState extends Equatable {
   const WeatherState();
@@ -602,6 +602,7 @@ class WeatherErrorState extends WeatherState {
 ```
 
 3. E depois os eventos `lib/features/presenter/bloc/weather_event.dart` :
+
 ```dart
 abstract class WeatherEvent extends Equatable {
   const WeatherEvent();
@@ -617,7 +618,8 @@ class OnCityChanged extends WeatherEvent {
   List<Object?> get props => [cityName];
 }
 ```
-4. e então o BLoC em si `lib/features/presenter/bloc/weather_bloc.dart` :
+1. e então o BLoC em si `lib/features/presenter/bloc/weather_bloc.dart` :
+
 ```dart
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   final GetCurrentWeatherUsecase _getCurrentWeather;
@@ -641,16 +643,19 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   }
 }
 ```
-5. criar o mock para o BLoC `test/mocks/mock_weather_bloc.dart`:
+
+1. criar o mock para o BLoC `test/mocks/mock_weather_bloc.dart`:
+
 ```dart
-class MockWeatherBloc extends MockBloc<WeatherEvent, WeatherState>
-    implements WeatherBloc {}
+  class MockWeatherBloc extends MockBloc<WeatherEvent, WeatherState>
+      implements WeatherBloc {}
+      
+  class FakeWeatherState extends Fake implements WeatherState {}
 
-class FakeWeatherState extends Fake implements WeatherState {}
-
-class FakeWeatherEvent extends Fake implements WeatherEvent {}
+  class FakeWeatherEvent extends Fake implements WeatherEvent {}
 ```
-6. Agora os teste do BLoC `test/features/presenter/bloc/weather_block_test.dart` deve passar.
+
+1. Agora os teste do BLoC `test/features/presenter/bloc/weather_block_test.dart` deve passar.
    
 #### Testes de Widget
 Para finalizar criaremos a o frontend em si, neste caso só teremos uma página
