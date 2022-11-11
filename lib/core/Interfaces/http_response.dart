@@ -6,4 +6,9 @@ class HttpResponse {
     this.data,
     this.statusCode,
   );
+
+  @override
+  String toString() {
+    return 'HttpResponse(data:$data, statusCode:$statusCode)';
+  }
 }

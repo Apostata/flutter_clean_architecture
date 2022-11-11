@@ -2,7 +2,7 @@ import 'package:flutter_clean_architecture/core/Interfaces/http_response.dart';
 import 'package:flutter_clean_architecture/core/http_client/http_client_interface.dart';
 import 'package:http/http.dart' as http;
 
-class HttpClient implements IHttpClient {
+class HttpClientCustom implements IHttpClient {
   final client = http.Client();
 
   @override
