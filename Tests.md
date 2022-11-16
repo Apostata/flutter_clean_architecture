@@ -38,6 +38,25 @@ Mocks são objetos pré-programados com expectativas que formam uma especificaç
 ### Escrevendo testes
 ```dart
 void main(){
+
+  setUpAll(()={
+    // alguma coisa para rodar antes de todos os testes
+  });
+
+  setUp((){
+    // algum coisa para rodar antes de cada teste
+  });
+
+  tearDown((){
+    // alguma coisa para rodar após cada teste, falhando ou não
+  })
+
+  tearDownAll((){
+    // alguma coisa para rodar todos os teste, falhando ou não
+  })
+
+
+  group('um grupo de teste', (){
     test('Descrição completa do teste', (){
         // Arrange
 
@@ -45,5 +64,63 @@ void main(){
 
         // Assert
     });
+  });
+
+  test('Descrição completa de outro teste', (){
+        // Arrange
+
+        // Act
+
+        // Assert
+    });
 }
+```
+
+#### setUpAll
+Roda antes de todos os testes do grupo ou geral 
+(Aqui injetamos as dependencias caso algum teste precise)
+
+#### setUp
+Roda antes de cada teste do grupo ou geral
+
+#### tearDown 
+Roda depois de cada teste do grupo ou geral. Mesmo que o teste falhe
+
+#### tearDown 
+Roda depois de todos os testes do grupo ou geral. Mesmo que o teste falhem
+
+#### Interceptando alguma chamada
+Abaixo segue o padrão do `Mocktail`(lib para mocks, aparentemente melhor que `Mockito`) para interceptação de chamadas assíncronas e síncronas
+
+##### Chamada com resposta assíncrona
+```dart
+...
+when(() => algumaFuncaoAsync(algumParametro))
+        .thenAnswer((invocation) async => mockDaRespostaAsync);
+
+await instancia.algumaFuncaoAsync(algumParametro);
+
+verify(() => instanciaFilhaMock.algumaFuncaoFilha(qualquerParametro)).called(1);
+...
+
+```
+
+##### Chamada com resposta síncrona
+```dart
+...
+when(() => algumaFuncaoSync(algumParametro))
+        .thenReturn((invocation) => mockDaRespostaSync);
+
+instancia.algumaFuncaoAsync(algumParametro);
+
+verify(() => instanciaFilhaMock.algumaFuncaoFilha(qualquerParametro)).called(1);
+...
+
+```
+
+#### Mocks
+usando o `Mocktail` é extemamente simples
+
+```dart
+class AlgumaClasseMock extends Mock implements AlgumaClasse{} 
 ```

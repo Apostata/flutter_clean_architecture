@@ -639,9 +639,11 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   class MockWeatherBloc extends MockBloc<WeatherEvent, WeatherState>
       implements WeatherBloc {}
       
-  class FakeWeatherState extends Fake implements WeatherState {}
+ // class FakeWeatherState extends Fake implements WeatherState {}
 
-  class FakeWeatherEvent extends Fake implements WeatherEvent {}
+//  class FakeWeatherEvent extends Fake implements WeatherEvent {}
+
+// APARENTEMENTE AS LINHAS COMENTADAS ACIMA NÃO FIZERAM DIFERENÇA ALGUMA
 ```
 
 1. Agora os teste do BLoC `test/features/presenter/bloc/weather_block_test.dart` deve passar.
@@ -656,11 +658,13 @@ void main() {
 
   setUpAll(() async {
     HttpOverrides.global = null;
-    registerFallbackValue(FakeWeatherState());
-    registerFallbackValue(FakeWeatherEvent());
+   // registerFallbackValue(FakeWeatherState());
+   // registerFallbackValue(FakeWeatherEvent());
 
-    final di = GetIt.instance;
-    di.registerFactory<WeatherBloc>(() => mockWeatherBloc);
+   // final di = GetIt.instance;
+   // di.registerFactory<WeatherBloc>(() => mockWeatherBloc);
+
+   //APARENTE AS LINHAS COMENTADAS ACIMA NÃO FIZERAM DIFERENÇA ALGUMA
   });
 
   setUp(() {
@@ -973,8 +977,8 @@ class MyApp extends StatelessWidget {
 }
 ```
 ## Packages utilizadas:</br>
-dartz - Implementação dos conceitos de progrmação funcional para dart</br>http - Chamadas http</br>flutter_bloc - Para implementação do BLoC para gerenciamento de estaos</br>get_it - Para injeção de dependencias</br>equatable - Facilitar a comparação de objetos no dart, mesmo entre duas instancias. (bom para testes)</br>
-mocktail - Facilitar Mock, Fake e Stubs e não tem gerção de código como o Mockito</br>bloc_test - Facilitar os testes de BLoC
+dartz - Implementação dos conceitos de progrmação funcional para dart</br>http - Chamadas http</br>flutter_bloc - Para implementação do BLoC para gerenciamento de estaos</br>get_it - Para injeção de dependencias</br>equatable - Facilitar a comparação de objetos no dart, mesmo entre duas instancias diferentes. (bom para testes)</br>
+mocktail - Facilitar Mock, Fake e Stubs e não tem gerção de código como o Mockito</br>bloc_test - Para os testes de BLoC
 
 Agradecimentos pelo conhecimento fornecido:</br>
 [Tutorial no youtube](https://www.youtube.com/watch?v=odr59ZAx-IU&list=PLnFA4SZ9y0T5FA2dFdNh6NLD6Rm6GB6x7) by [LeBaleiro](https://github.com/LeBaleiro)</br>

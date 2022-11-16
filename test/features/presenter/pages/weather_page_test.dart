@@ -8,7 +8,7 @@ import 'package:flutter_clean_architecture/features/presenter/bloc/weather_event
 import 'package:flutter_clean_architecture/features/presenter/bloc/weather_state.dart';
 import 'package:flutter_clean_architecture/features/presenter/pages/weather_page.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:get_it/get_it.dart';
+// import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
 import '../../../mocks/mock_city_name.dart';
 import '../../../mocks/mock_iweather.dart';
@@ -17,13 +17,18 @@ import '../../../mocks/mock_weather_bloc.dart';
 void main() {
   late MockWeatherBloc mockWeatherBloc;
 
-  setUpAll(() async {
-    HttpOverrides.global = null;
-    registerFallbackValue(FakeWeatherState());
-    registerFallbackValue(FakeWeatherEvent());
+  // setUpAll(() async {
+  //   // Mockar a injeção de dependência do Bloc, dessa forma fica independente do arquivo injection
+  //   // final di = GetIt.instance;
+  //   // di.registerFactory<WeatherBloc>(() => mockWeatherBloc);
 
-    final di = GetIt.instance;
-    di.registerFactory<WeatherBloc>(() => mockWeatherBloc);
+  //   HttpOverrides.global = null;
+  //   // registerFallbackValue(FakeWeatherState());
+  //   // registerFallbackValue(FakeWeatherEvent());
+  // });
+
+  setUpAll(() {
+    HttpOverrides.global = null;
   });
 
   setUp(() {
